@@ -35,7 +35,7 @@ public class DbService(AppDbContext dbContext) : IDbService
             .Take(pageSize)
             .ToListAsync();
 
-        var tripsCount = trips.Count;
+        var tripsCount = await dbContext.Trips.CountAsync();
         
         return new TripsGetDto
         {
